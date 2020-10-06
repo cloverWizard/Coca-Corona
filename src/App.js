@@ -2,7 +2,6 @@ import React from "react";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 
 import "./App.css";
 
@@ -10,16 +9,22 @@ class App extends React.Component {
   renderNavbar() {
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand href="#home" className="order-md-0 mx-auto order-1">
+          Coca-Corona
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="order-md-1 order-0"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#dashboard">Dashboard</Nav.Link>
             <Nav.Link href="#map">Map</Nav.Link>
             <Nav.Link href="#contacts">Contacts</Nav.Link>
-            <Button variant="primary">Log out</Button>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand href="#home">Coca-Corona</Navbar.Brand>
+        <myuw-profile 
+          login-url=""
+          logout-url=""
+          background-color=""
+        ></myuw-profile>
       </Navbar>
     );
   }
@@ -43,7 +48,7 @@ class App extends React.Component {
           ></script>
           <script>
             customElements .whenDefined('myuw-profile') .then(() =>
-            document.dispatchEvent(new CustomEvent('myuw-login', {}))) ;
+            {console.log("What")}) ;
           </script>
           {this.renderNavbar()}
         </header>
