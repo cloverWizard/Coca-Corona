@@ -6,6 +6,8 @@ COVID dashboard *(and more!)* for college students.
 
 ## Info about this starter codebase
 
+**Filenames starting with `_` are currently not used as they are part of the original starter code.**
+
 A starter that has a database
 
 - This app uses sqlite but you can power your apps with [a number of other storage options](https://glitch.com/storage)
