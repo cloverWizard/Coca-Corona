@@ -94,7 +94,7 @@ class App extends React.Component {
         </header>
         <main>
           <h1>TEST!</h1>
-          <p>No Cont</p>
+          <p>No content yet...</p>
         </main>
         <footer className="footer">{this.renderFooter()}</footer>
       </>
