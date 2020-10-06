@@ -1,4 +1,11 @@
-# hello-sqlite
+# Coca-Corona
+
+(logo here)
+
+(description here)
+
+
+## Info about this starter codebase
 
 A starter that has a database
 
@@ -18,8 +25,3 @@ On the back-end,
 - Safely store app secrets in `.env` (nobody can see this but you and people you invite)
 
 Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
-
-
-## Made by [Glitch](https://glitch.com/)
-
-\ ゜ o ゜)ノ
