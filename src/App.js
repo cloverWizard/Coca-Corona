@@ -60,12 +60,21 @@ class App extends React.Component {
     return (
       <Navbar bg="light">
         <Nav className="mr-auto">
-          <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+          <Nav.Link href="#dashboard">
+            <Image src={process.env.PUBLIC_URL + "/map-fill.svg"} />
+            <br />
+            Dashboard
+          </Nav.Link>
           <Nav.Link href="#map">
-            <Image src="%PUBLIC_URL%/house-fill.svg" roundedCircle />
+            <Image src={process.env.PUBLIC_URL + "/house-fill.svg"} />
+            <br />
             Map
           </Nav.Link>
-          <Nav.Link href="#contacts">Contacts</Nav.Link>
+          <Nav.Link href="#contacts">
+            <Image src={process.env.PUBLIC_URL + "/people-fill.svg"} />
+            <br />
+            Contacts
+          </Nav.Link>
         </Nav>
       </Navbar>
     );
@@ -89,7 +98,7 @@ class App extends React.Component {
         <main>
           <h1>TEST!</h1>
         </main>
-        <footer>{this.renderFooter()}</footer>
+        <footer className="footer">{this.renderFooter()}</footer>
       </>
     );
   }
