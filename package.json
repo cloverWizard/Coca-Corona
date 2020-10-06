@@ -1,8 +1,7 @@
 {
   "name": "coca-corona",
   "version": "0.0.1",
-  "description": "A simple Node app with SQLite as a database management system, instantly up and running.",
-  "main": "server.js",
+  "description": "COVID dashboard (and more!) for college students.",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

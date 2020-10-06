@@ -2,8 +2,7 @@
 
 (logo here)
 
-(description here)
-
+COVID dashboard *(and more!)* for college students.
 
 ## Info about this starter codebase
 
