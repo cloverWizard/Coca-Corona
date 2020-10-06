@@ -2,6 +2,7 @@ import React from "react";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Image from "react-bootstrap/Image";
 
 import "./App.css";
 
@@ -22,14 +23,14 @@ class App extends React.Component {
             // required always
             person: {
               // required for generic session display
-              firstName: "User Name", // required for full session display
-              lastName: "Name"
+              firstName: "User Name" // required for full session display
             }
           }
         })
       );
     });
   }
+
   renderNavbar() {
     return (
       <Navbar bg="light" expand="lg">
@@ -46,10 +47,25 @@ class App extends React.Component {
         </Navbar.Collapse>
         <Nav className="order-12">
           <myuw-profile
-            login-url=""
-            logout-url=""
+            login-url="#"
+            logout-url="#"
             background-color=""
           ></myuw-profile>
+        </Nav>
+      </Navbar>
+    );
+  }
+
+  renderFooter() {
+    return (
+      <Navbar bg="light">
+        <Nav className="mr-auto">
+          <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+          <Nav.Link href="#map">
+            <Image src="%PUBLIC_URL%/house-fill.svg" roundedCircle />
+            Map
+          </Nav.Link>
+          <Nav.Link href="#contacts">Contacts</Nav.Link>
         </Nav>
       </Navbar>
     );
@@ -73,6 +89,7 @@ class App extends React.Component {
         <main>
           <h1>TEST!</h1>
         </main>
+        <footer>{this.renderFooter()}</footer>
       </>
     );
   }
