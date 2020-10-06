@@ -22,7 +22,7 @@ class App extends React.Component {
             // required always
             person: {
               // required for generic session display
-              firstName: "User", // required for full session display
+              firstName: "User Name", // required for full session display
               lastName: "Name"
             }
           }
@@ -44,12 +44,13 @@ class App extends React.Component {
             <Nav.Link href="#contacts">Contacts</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <myuw-profile
-          className="order-0"
-          login-url=""
-          logout-url=""
-          background-color=""
-        ></myuw-profile>
+        <Nav className="order-12">
+          <myuw-profile
+            login-url=""
+            logout-url=""
+            background-color=""
+          ></myuw-profile>
+        </Nav>
       </Navbar>
     );
   }
