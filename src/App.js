@@ -6,13 +6,37 @@ import Nav from "react-bootstrap/Nav";
 import "./App.css";
 
 class App extends React.Component {
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.async = true;
+    script.type = "module";
+    script.src =
+      "https://unpkg.com/@myuw-web-components/myuw-profile@latest?module";
+    //For head
+    document.head.appendChild(script);
+    customElements.whenDefined("myuw-profile").then(() => {
+      document.dispatchEvent(
+        new CustomEvent("myuw-login", {
+          bubbles: true, // optional
+          detail: {
+            // required always
+            person: {
+              // required for generic session display
+              firstName: "User", // required for full session display
+              lastName: "Name"
+            }
+          }
+        })
+      );
+    });
+  }
   renderNavbar() {
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home" className="order-md-0 mx-auto order-1">
+        <Navbar.Brand href="#home" className="order-1">
           Coca-Corona
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="order-md-1 order-0"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="order-0" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#dashboard">Dashboard</Nav.Link>
@@ -20,7 +44,8 @@ class App extends React.Component {
             <Nav.Link href="#contacts">Contacts</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <myuw-profile 
+        <myuw-profile
+          className="order-0"
           login-url=""
           logout-url=""
           background-color=""
@@ -39,17 +64,9 @@ class App extends React.Component {
             crossOrigin="anonymous"
           />
           <script
-            type="module"
-            src="https://unpkg.com/@myuw-web-components/myuw-profile@latest?module"
-          ></script>
-          <script
             noModule
             src="https://unpkg.com/@myuw-web-components/myuw-profile@latest"
           ></script>
-          <script>
-            customElements .whenDefined('myuw-profile') .then(() =>
-            {console.log("What")}) ;
-          </script>
           {this.renderNavbar()}
         </header>
         <main>
