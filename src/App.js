@@ -62,18 +62,15 @@ class App extends React.Component {
         <Nav className="d-flex justify-content-around">
           <Nav.Link href="#dashboard">
             <Image src={process.env.PUBLIC_URL + "/map-fill.svg"} />
-            <br />
-            Dashboard
+            <span>Dashboard</span>
           </Nav.Link>
           <Nav.Link href="#map">
             <Image src={process.env.PUBLIC_URL + "/house-fill.svg"} />
-            <br />
-            Map
+            <span>Map</span>
           </Nav.Link>
           <Nav.Link href="#contacts">
             <Image src={process.env.PUBLIC_URL + "/people-fill.svg"} />
-            <br />
-            Contacts
+            <span>Contacts</span>
           </Nav.Link>
         </Nav>
       </Navbar>
