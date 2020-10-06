@@ -58,8 +58,8 @@ class App extends React.Component {
 
   renderFooter() {
     return (
-      <Navbar bg="light">
-        <Nav className="mr-auto">
+      <Navbar bg="light" className="d-flex justify-content-center">
+        <Nav className="d-flex justify-content-around">
           <Nav.Link href="#dashboard">
             <Image src={process.env.PUBLIC_URL + "/map-fill.svg"} />
             <br />
