@@ -4,6 +4,20 @@
 
 COVID dashboard *(and more!)* for college students.
 
+
+## Links
+
+- [Lean canvas](https://docs.google.com/drawings/d/1wuPCQjCi80V6NI65keBMbjzAH5jdATYWaXx2Wlg9XU0/edit)
+- [Design goals](https://docs.google.com/document/d/1AW1peLZ9C6EF_Sgjuje3bI8dwVKjusDShvfRbmOULnE/edit)
+- [Users' stories](https://docs.google.com/document/d/1rTMJ-c1355DU5jLO-8I_2txg6OhJhSb3Yksmt3QZUj8/edit)
+- [Prototype](https://www.figma.com/file/v5NOO8FiJVVZuJgZ4dfyZn/Coca-Corona)
+
+## Tech stack
+
+Use Glitch to code together
+- React
+- Python (Flask?)
+
 ## Info about this starter codebase
 
 **Filenames starting with `_` are currently not used as they are part of the original starter code.**
