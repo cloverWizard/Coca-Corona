@@ -11,6 +11,7 @@ COVID dashboard *(and more!)* for college students.
 - [Design goals](https://docs.google.com/document/d/1AW1peLZ9C6EF_Sgjuje3bI8dwVKjusDShvfRbmOULnE/edit)
 - [Users' stories](https://docs.google.com/document/d/1rTMJ-c1355DU5jLO-8I_2txg6OhJhSb3Yksmt3QZUj8/edit)
 - [Prototype](https://www.figma.com/file/v5NOO8FiJVVZuJgZ4dfyZn/Coca-Corona)
+- [JIRA board](https://coca-corona.atlassian.net/browse/CC)
 
 ## Tech stack
 
