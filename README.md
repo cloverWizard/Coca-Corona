@@ -16,8 +16,7 @@ COVID dashboard *(and more!)* for college students.
 
 Use Glitch to code together
 - React
-- Python (Flask?)
-
+- Python - Django
 ## Info about this starter codebase
 
 **Filenames starting with `_` are currently not used as they are part of the original starter code.**
