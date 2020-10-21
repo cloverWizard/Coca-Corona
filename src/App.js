@@ -20,6 +20,7 @@ class App extends React.Component {
 
   login(username, password) {
     console.log(username);
+    this.setState({loggedIn: true});
   }
 
   componentDidMount() {
@@ -91,29 +92,43 @@ class App extends React.Component {
       </Navbar>
     );
   }
+
+  // Not sure whether or not this is good, again, we should change this -Tarun
+  loginRender() {
+    if (this.state.loggedIn) {
+      return (
+        <>
+          <header>
+            <link
+              rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossOrigin="anonymous"
+            />
+            <script
+              noModule
+              src="https://unpkg.com/@myuw-web-components/myuw-profile@latest"
+            ></script>
+            {this.renderNavbar()}
+          </header>
+          <main>
+            <h1>TEST!</h1>
+            <p>No content yet...</p>
+          </main>
+          <footer className="footer">{this.renderFooter()}</footer>
+        </>
+      );
+    }
+    else {
+      return (
+        <LoginScreen login={this.login.bind(this)}/>
+      );
+    }
+  }
+
   render() {
     return (
-      <>
-        <header>
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossOrigin="anonymous"
-          />
-          <script
-            noModule
-            src="https://unpkg.com/@myuw-web-components/myuw-profile@latest"
-          ></script>
-          {this.renderNavbar()}
-        </header>
-        <main>
-          <h1>TEST!</h1>
-          <p>No content yet...</p>
-          <LoginScreen login={this.login.bind(this)}/>
-        </main>
-        <footer className="footer">{this.renderFooter()}</footer>
-      </>
+      this.loginRender()
     );
   }
 }
