@@ -8,6 +8,20 @@ import Image from "react-bootstrap/Image";
 import "./App.css";
 
 class App extends React.Component {
+
+  // Don't know if this is what we want but it can be placeholder for now -Tarun
+  constructor(props){
+    super(props);
+    this.state={
+      loggedIn:false,
+      name: "User Name"
+    };
+  }
+
+  login(username, password) {
+    console.log(username);
+  }
+
   componentDidMount() {
     const script = document.createElement("script");
     script.async = true;
@@ -24,7 +38,7 @@ class App extends React.Component {
             // required always
             person: {
               // required for generic session display
-              firstName: "User Name" // required for full session display
+              firstName: this.state.name // required for full session display
             }
           }
         })
@@ -96,7 +110,7 @@ class App extends React.Component {
         <main>
           <h1>TEST!</h1>
           <p>No content yet...</p>
-          <LoginScreen/>
+          <LoginScreen login={this.login.bind(this)}/>
         </main>
         <footer className="footer">{this.renderFooter()}</footer>
       </>
