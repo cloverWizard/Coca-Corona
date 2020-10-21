@@ -1,4 +1,5 @@
 import React from "react";
+import LoginScreen from './LoginScreen.js';
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -95,6 +96,7 @@ class App extends React.Component {
         <main>
           <h1>TEST!</h1>
           <p>No content yet...</p>
+          <LoginScreen/>
         </main>
         <footer className="footer">{this.renderFooter()}</footer>
       </>
