@@ -38,6 +38,7 @@ class Dashboard extends React.Component {
       )
         .then(res => res.json())
         .then(json => {
+        // not showing up... - Kesong
           console.log(json);
         });
     });
