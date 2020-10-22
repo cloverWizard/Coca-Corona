@@ -1,10 +1,11 @@
 import React from "react";
-import LoginScreen from "./LoginScreen.js";
-import MenuBarMap from "./MenuBarMap.js";
-
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
+import Table from "react-bootstrap/Table";
+
+import LoginScreen from "./LoginScreen.js";
+import MenuBarMap from "./MenuBarMap.js";
 
 import "./App.css";
 
@@ -17,7 +18,7 @@ class App extends React.Component {
       name: "User Name",
       currentPage: "dashboard",
       dashboard: {
-        currentUSTotalCases: "loading"
+        currentUSTotalValues: "loading"
       }
     };
   }
@@ -49,7 +50,12 @@ class App extends React.Component {
         })
       );
     });
-    this.fetchCurrentValues();
+    fetch("https://api.covidtracking.com/v1/us/current.json")
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        this.setState({ dashboard: { currentUSTotalValues: json } });
+      });
   }
 
   renderNavbar() {
@@ -108,23 +114,28 @@ class App extends React.Component {
       </Navbar>
     );
   }
-  async fetchCurrentValues() {
-    const url = "https://api.covidtracking.com/v1/us/current.json";
-    const response = await fetch(url);
-    console.log(response.json());
-    let totalCases = 8000000;
-    return (
-      <>
-        <p>Total cases: {totalCases}</p>
-      </>
-    );
-  }
 
   renderDashboard() {
     return (
       <>
         <h1>Current U.S. values</h1>
-        {this.state.dashboard.currentUSTotalCases}
+        <Table striped bordered hover>
+          <tbody>
+            <tr>
+              <td>Positive</td>
+              <td>{this.state.dashboard.currentUSTotalValues.positive}</td>
+            </tr>
+            <tr>
+              <td>Death</td>
+              <td>Thornton</td>
+            </tr>
+            <tr>
+              <td>Recovered</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </Table>
+        
       </>
     );
   }
