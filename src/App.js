@@ -6,6 +6,7 @@ import Table from "react-bootstrap/Table";
 
 import LoginScreen from "./LoginScreen.js";
 import MenuBarMap from "./MenuBarMap.js";
+import Dashboard from "./Dashboard.js";
 
 import "./App.css";
 
@@ -17,9 +18,6 @@ class App extends React.Component {
       loggedIn: false,
       name: "User Name",
       currentPage: "dashboard",
-      dashboard: {
-        currentUSValues: "loading"
-      }
     };
   }
 
@@ -50,12 +48,6 @@ class App extends React.Component {
         })
       );
     });
-    fetch("https://api.covidtracking.com/v1/us/current.json")
-      .then(res => res.json())
-      .then(json => json[0])
-      .then(json => {
-        this.setState({ dashboard: { currentUSValues: json } });
-      });
   }
 
   renderNavbar() {
@@ -115,47 +107,16 @@ class App extends React.Component {
     );
   }
 
-  renderDashboard() {
-    console.log(this.state.dashboard.currentUSValues);
-    return (
-      <>
-        <h1>Current U.S. values</h1>
-        <Table striped bordered hover>
-          <tbody>
-            <tr>
-              <td rowSpan="2">Positive</td>
-              <td>Total</td>
-              <td>{this.state.dashboard.currentUSValues.positive}</td>
-            </tr>
-            <tr>
-              <td>Increase</td>
-              <td>{this.state.dashboard.currentUSValues.positiveIncrease}</td>
-            </tr>
-            <tr>
-              <td rowSpan="2">Death</td>
-              <td>Total</td>
-              <td>{this.state.dashboard.currentUSValues.death}</td>
-            </tr>
-            <tr>
-              <td>Increase</td>
-              <td>{this.state.dashboard.currentUSValues.deathIncrease}</td>
-            </tr>
-            <tr>
-              <td>Recovered</td>
-              <td>Total</td>
-              <td>{this.state.dashboard.currentUSValues.recovered}</td>
-            </tr>
-          </tbody>
-        </Table>
-      </>
-    );
-  }
-
   mainRender() {
     if (this.state.currentPage === "dashboard") {
-      return this.renderDashboard();
+      return (<Dashboard></Dashboard>);
     } else if (this.state.currentPage === "map") {
-      return <MenuBarMap />;
+      return (
+        <>
+          <h1>Map!</h1>
+          <p>No content yet...</p>
+        </>
+      );
     } else {
       return (
         <>
