@@ -18,10 +18,25 @@ class Dashboard extends React.Component {
       .then(json => {
         this.setState({ currentUSValues: json });
       });
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
-    });
+    navigator.geolocation
+      .getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        return [lat, lon];
+      })
+      .then(([lat, lon]) => {
+        fetch(
+          "https://us1.locationiq.com/v1/reverse.php?key=65d6acbb182add541f5e458dbaf9bbd6&lat=" +
+            lat +
+            "&lon=" +
+            lon +
+            "&zoom=5&format=json"
+        )
+          .then(res => res.json())
+          .then(json => {
+            console.log(json);
+          });
+      });
   }
 
   render() {

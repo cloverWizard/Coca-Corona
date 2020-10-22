@@ -173,8 +173,12 @@ class App extends React.Component {
     );
   }
 }
+// this would not work as App.js require an export of App - Kesong
+// Google Map need a wrapper to send apiKey... I am trying to figure that out - Pujin
+// maybe create a new js file? - Kesong
+// Yeah I'll try that - Pujin
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk"
-})(MapContainer);
-// export default App;
+// export default GoogleApiWrapper({
+//   apiKey: "AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk"
+// })(App);
+export default App;
