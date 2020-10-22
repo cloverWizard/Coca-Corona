@@ -71,12 +71,16 @@ class App extends React.Component {
       </Navbar>
     );
   }
+  
+  switchPage(page) {
+    this.setState({currentPage: page});
+  }
 
   renderFooter() {
     return (
       <Navbar bg="light" className="d-flex justify-content-around">
         <Nav className="d-flex justify-content-around">
-          <Nav.Link href="#dashboard">
+          <Nav.Link href="#dashboard" onClick={this.switchPage("dashboard")}>
             <Image src={process.env.PUBLIC_URL + "/map-fill.svg"} />
             <span>Dashboard</span>
           </Nav.Link>
@@ -94,8 +98,21 @@ class App extends React.Component {
   }
 
   mainRender() {
-    return (
-    );
+    if (this.state.currentPage !== "dashboard") {
+      return (
+        <>
+          <h1>TEST!</h1>
+          <p>No content yet...</p>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h1>Dashboard!</h1>
+          <p>No content yet...</p>
+        </>
+      );
+    }
   }
 
   // Not sure whether or not this is good, again, we should change this -Tarun
@@ -104,9 +121,7 @@ class App extends React.Component {
     if (this.state.loggedIn) {
       return (
         <>
-          <main>
-            {this.mainRender()}
-          </main>
+          <main>{this.mainRender()}</main>
           <footer className="footer">{this.renderFooter()}</footer>
         </>
       );
