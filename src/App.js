@@ -107,7 +107,14 @@ class App extends React.Component {
           <p>No content yet...</p>
         </>
       );
-    } else {
+    } else if (this.state.currentPage === "map") {
+      return (
+        <>
+          <h1>Map!</h1>
+          <p>No content yet...</p>
+        </>
+      );
+    }else {
       return (
         <>
           <h1>Dashboard!</h1>
