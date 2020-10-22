@@ -1,35 +1,34 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
- 
+import React, { Component } from "react";
+import GoogleMapReact from "google-map-react";
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
- 
+
 class MenuBarMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
-  };
- 
+  constructor(props) {
+    super(props);
+    this.props.defaultProps = {
+      center: {
+        lat: 59.95,
+        lng: 30.33
+      },
+      zoom: 11
+    };
+  }
+
   render() {
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: "100vh", width: "100%" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: ’AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk‘ }}
+          bootstrapURLKeys={{ key: "AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-          />
+          <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
         </GoogleMapReact>
       </div>
     );
   }
 }
- 
+
 export default MenuBarMap;

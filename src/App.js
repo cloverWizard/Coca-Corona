@@ -82,7 +82,10 @@ class App extends React.Component {
     return (
       <Navbar bg="light" className="d-flex justify-content-around">
         <Nav className="d-flex justify-content-around">
-          <Nav.Link href="#dashboard" onClick={() => this.switchPage("dashboard")}>
+          <Nav.Link
+            href="#dashboard"
+            onClick={() => this.switchPage("dashboard")}
+          >
             <Image src={process.env.PUBLIC_URL + "/map-fill.svg"} />
             <span>Dashboard</span>
           </Nav.Link>
@@ -90,7 +93,10 @@ class App extends React.Component {
             <Image src={process.env.PUBLIC_URL + "/house-fill.svg"} />
             <span>Map</span>
           </Nav.Link>
-          <Nav.Link href="#contacts" onClick={() => this.switchPage("contacts")}>
+          <Nav.Link
+            href="#contacts"
+            onClick={() => this.switchPage("contacts")}
+          >
             <Image src={process.env.PUBLIC_URL + "/people-fill.svg"} />
             <span>Contacts</span>
           </Nav.Link>
@@ -98,15 +104,30 @@ class App extends React.Component {
       </Navbar>
     );
   }
+  
+  async renderCurrentValues() {
+    const url = 'https://api.covidtracking.com/v1/us/current.json';
+    const response = await fetch()
+    let totalCases = 8000000;
+    return (
+      <>
+        <p>Total cases: {totalCases}</p>
+      </>
+    );
+  }
+
+  renderDashboard() {
+    return (
+      <>
+        <h1>Current U.S. values</h1>
+        {}
+      </>
+    );
+  }
 
   mainRender() {
     if (this.state.currentPage === "dashboard") {
-      return (
-        <>
-          <h1>Dashboard!</h1>
-          <p>No content yet...</p>
-        </>
-      );
+      return this.renderDashboard();
     } else if (this.state.currentPage === "map") {
       return (
         <>
@@ -114,7 +135,7 @@ class App extends React.Component {
           <p>No content yet...</p>
         </>
       );
-    }else {
+    } else {
       return (
         <>
           <h1>Contacts!</h1>
