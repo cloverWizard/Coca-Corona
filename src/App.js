@@ -1,5 +1,6 @@
 import React from "react";
 import LoginScreen from "./LoginScreen.js";
+// import MenuBarMap from "./MenuBarMap.js";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -71,24 +72,25 @@ class App extends React.Component {
       </Navbar>
     );
   }
-  
+
   switchPage(page) {
-    this.setState({currentPage: page});
+    this.setState({ currentPage: page });
+    console.log(page);
   }
 
   renderFooter() {
     return (
       <Navbar bg="light" className="d-flex justify-content-around">
         <Nav className="d-flex justify-content-around">
-          <Nav.Link href="#dashboard" onClick={this.switchPage("dashboard")}>
+          <Nav.Link href="#dashboard" onClick={() => this.switchPage("dashboard")}>
             <Image src={process.env.PUBLIC_URL + "/map-fill.svg"} />
             <span>Dashboard</span>
           </Nav.Link>
-          <Nav.Link href="#map">
+          <Nav.Link href="#map" onClick={() => this.switchPage("map")}>
             <Image src={process.env.PUBLIC_URL + "/house-fill.svg"} />
             <span>Map</span>
           </Nav.Link>
-          <Nav.Link href="#contacts">
+          <Nav.Link href="#contacts" onClick={() => this.switchPage("contacts")}>
             <Image src={process.env.PUBLIC_URL + "/people-fill.svg"} />
             <span>Contacts</span>
           </Nav.Link>
