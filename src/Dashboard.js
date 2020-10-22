@@ -11,6 +11,16 @@ class Dashboard extends React.Component {
     };
   }
 
+  getLatLon() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        return [lat, lon];
+      });
+    });
+  }
+
   componentDidMount() {
     fetch("https://api.covidtracking.com/v1/us/current.json")
       .then(res => res.json())
@@ -18,25 +28,19 @@ class Dashboard extends React.Component {
       .then(json => {
         this.setState({ currentUSValues: json });
       });
-    navigator.geolocation
-      .getCurrentPosition(function(position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        return [lat, lon];
-      })
-      .then(([lat, lon]) => {
-        fetch(
-          "https://us1.locationiq.com/v1/reverse.php?key=65d6acbb182add541f5e458dbaf9bbd6&lat=" +
-            lat +
-            "&lon=" +
-            lon +
-            "&zoom=5&format=json"
-        )
-          .then(res => res.json())
-          .then(json => {
-            console.log(json);
-          });
-      });
+    this.getLatLon().then(([lat, lon]) => {
+      fetch(
+        "https://us1.locationiq.com/v1/reverse.php?key=65d6acbb182add541f5e458dbaf9bbd6&lat=" +
+          lat +
+          "&lon=" +
+          lon +
+          "&zoom=5&format=json"
+      )
+        .then(res => res.json())
+        .then(json => {
+          console.log(json);
+        });
+    });
   }
 
   render() {
