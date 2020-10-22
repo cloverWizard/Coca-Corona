@@ -112,10 +112,17 @@ class App extends React.Component {
       return (<Dashboard></Dashboard>);
     } else if (this.state.currentPage === "map") {
       return (
-        <>
-          <h1>Mas!</h1>
-          <p>No content yet...</p>
-        </>
+        <Map google={this.props.google} zoom={14}>
+ 
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
+ 
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
+      </Map>
       );
     } else {
       return (
@@ -167,7 +174,7 @@ class App extends React.Component {
   }
 }
 
-// export default GoogleApiWrapper({
-//   apiKey: "AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk"
-// })(MapContainer)
-export default App;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk"
+})(MapContainer);
+// export default App;
