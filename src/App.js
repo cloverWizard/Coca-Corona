@@ -18,7 +18,7 @@ class App extends React.Component {
       name: "User Name",
       currentPage: "dashboard",
       dashboard: {
-        currentUSTotalValues: "loading"
+        currentUSValues: "loading"
       }
     };
   }
@@ -52,9 +52,9 @@ class App extends React.Component {
     });
     fetch("https://api.covidtracking.com/v1/us/current.json")
       .then(res => res.json())
+      .then(json => json[0])
       .then(json => {
-        console.log(json);
-        this.setState({ dashboard: { currentUSTotalValues: json } });
+        this.setState({ dashboard: { currentUSValues: json } });
       });
   }
 
@@ -116,26 +116,37 @@ class App extends React.Component {
   }
 
   renderDashboard() {
+    console.log(this.state.dashboard.currentUSValues);
     return (
       <>
         <h1>Current U.S. values</h1>
         <Table striped bordered hover>
           <tbody>
             <tr>
-              <td>Positive</td>
-              <td>{this.state.dashboard.currentUSTotalValues.positive}</td>
+              <td rowSpan="2">Positive</td>
+              <td>Total</td>
+              <td>{this.state.dashboard.currentUSValues.positive}</td>
             </tr>
             <tr>
-              <td>Death</td>
-              <td>Thornton</td>
+              <td>Increase</td>
+              <td>{this.state.dashboard.currentUSValues.positiveIncrease}</td>
+            </tr>
+            <tr>
+              <td rowSpan="2">Death</td>
+              <td>Total</td>
+              <td>{this.state.dashboard.currentUSValues.death}</td>
+            </tr>
+            <tr>
+              <td>Increase</td>
+              <td>{this.state.dashboard.currentUSValues.deathIncrease}</td>
             </tr>
             <tr>
               <td>Recovered</td>
-              <td>@twitter</td>
+              <td>Total</td>
+              <td>{this.state.dashboard.currentUSValues.recovered}</td>
             </tr>
           </tbody>
         </Table>
-        
       </>
     );
   }
@@ -144,12 +155,7 @@ class App extends React.Component {
     if (this.state.currentPage === "dashboard") {
       return this.renderDashboard();
     } else if (this.state.currentPage === "map") {
-      return (
-        <>
-          <h1>Map!</h1>
-          <p>No content yet...</p>
-        </>
-      );
+      return <MenuBarMap />;
     } else {
       return (
         <>
