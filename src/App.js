@@ -1,6 +1,6 @@
 import React from "react";
 import LoginScreen from "./LoginScreen.js";
-import MenuBarMap from "./MenuBarMap.js";
+// import MenuBarMap from "./MenuBarMap.js";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -108,7 +108,12 @@ class App extends React.Component {
         </>
       );
     } else if (this.state.currentPage === "map") {
-      return <MenuBarMap />;
+      return (
+        <>
+          <h1>Map!</h1>
+          <p>No content yet...</p>
+        </>
+      );
     }else {
       return (
         <>
