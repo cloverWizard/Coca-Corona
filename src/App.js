@@ -15,7 +15,10 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       name: "User Name",
-      currentPage: "dashboard"
+      currentPage: "dashboard",
+      dashboard: {
+        currentUSTotalCases: "loading"
+      }
     };
   }
 
@@ -46,6 +49,7 @@ class App extends React.Component {
         })
       );
     });
+    this.fetchCurrentValues();
   }
 
   renderNavbar() {
@@ -104,10 +108,10 @@ class App extends React.Component {
       </Navbar>
     );
   }
-  
-  async renderCurrentValues() {
-    const url = 'https://api.covidtracking.com/v1/us/current.json';
-    const response = await fetch()
+  async fetchCurrentValues() {
+    const url = "https://api.covidtracking.com/v1/us/current.json";
+    const response = await fetch(url);
+    console.log(response.json());
     let totalCases = 8000000;
     return (
       <>
@@ -120,7 +124,7 @@ class App extends React.Component {
     return (
       <>
         <h1>Current U.S. values</h1>
-        {}
+        {this.state.dashboard.currentUSTotalCases}
       </>
     );
   }
