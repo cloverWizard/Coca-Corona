@@ -1,5 +1,5 @@
 import React from "react";
-import LoginScreen from './LoginScreen.js';
+import LoginScreen from "./LoginScreen.js";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,19 +8,19 @@ import Image from "react-bootstrap/Image";
 import "./App.css";
 
 class App extends React.Component {
-
   // Don't know if this is what we want but it can be placeholder for now -Tarun
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      loggedIn:false,
-      name: "User Name"
+    this.state = {
+      loggedIn: false,
+      name: "User Name",
+      currentPage: "dashboard"
     };
   }
 
   login(username, password) {
     console.log(username);
-    this.setState({loggedIn: true});
+    this.setState({ loggedIn: true });
   }
 
   componentDidMount() {
@@ -93,42 +93,49 @@ class App extends React.Component {
     );
   }
 
+  mainRender() {
+    return (
+    );
+  }
+
   // Not sure whether or not this is good, again, we should change this -Tarun
+  // got you! - Kesong Oct 22 14:08 CST
   loginRender() {
     if (this.state.loggedIn) {
       return (
         <>
-          <header>
-            <link
-              rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossOrigin="anonymous"
-            />
-            <script
-              noModule
-              src="https://unpkg.com/@myuw-web-components/myuw-profile@latest"
-            ></script>
-            {this.renderNavbar()}
-          </header>
           <main>
-            <h1>TEST!</h1>
-            <p>No content yet...</p>
+            {this.mainRender()}
           </main>
           <footer className="footer">{this.renderFooter()}</footer>
         </>
       );
-    }
-    else {
-      return (
-        <LoginScreen login={this.login.bind(this)}/>
-      );
+    } else {
+      return <LoginScreen login={this.login.bind(this)} />;
     }
   }
 
+  renderNothing() {
+    return;
+  }
   render() {
     return (
-      this.loginRender()
+      <>
+        <header>
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossOrigin="anonymous"
+          />
+          <script
+            noModule
+            src="https://unpkg.com/@myuw-web-components/myuw-profile@latest"
+          ></script>
+          {this.state.loggedIn ? this.renderNavbar() : this.renderNothing()}
+        </header>
+        {this.loginRender()}
+      </>
     );
   }
 }
