@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
-import Table from "react-bootstrap/Table";
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 import LoginScreen from "./LoginScreen.js";
 import MenuBarMap from "./MenuBarMap.js";
@@ -113,7 +113,7 @@ class App extends React.Component {
     } else if (this.state.currentPage === "map") {
       return (
         <>
-          <h1>Map!</h1>
+          <h1>Mas!</h1>
           <p>No content yet...</p>
         </>
       );
@@ -167,4 +167,7 @@ class App extends React.Component {
   }
 }
 
+// export default GoogleApiWrapper({
+//   apiKey: "AIzaSyCba5Z2xaqw3zNZcgis6h01iFbwzjy7-hk"
+// })(MapContainer)
 export default App;
