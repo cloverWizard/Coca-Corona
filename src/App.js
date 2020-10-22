@@ -19,7 +19,7 @@ class App extends React.Component {
     };
   }
 
-  login(username, password) { 
+  login(username, password) {
     console.log(username);
     this.setState({ loggedIn: true });
   }
@@ -100,25 +100,24 @@ class App extends React.Component {
   }
 
   mainRender() {
-    if (this.state.currentPage === "dashboard") {
+    if (this.state.currentPage !== "dashboard") {
       return (
         <>
-          <h1>Dashboard!</h1>
+          <h1>TEST!</h1>
           <p>No content yet...</p>
         </>
       );
     } else if (this.state.currentPage === "map") {
       return (
         <>
-          <h1>Dashboard!</h1>
+          <h1>Map!</h1>
           <p>No content yet...</p>
         </>
       );
-      // return <MenuBarMap />;
     }else {
       return (
         <>
-          <h1>Contacts!</h1>
+          <h1>Dashboard!</h1>
           <p>No content yet...</p>
         </>
       );
