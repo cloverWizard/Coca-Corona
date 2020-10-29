@@ -155,7 +155,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <header>
+        <h1>
           <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -167,7 +167,7 @@ class App extends React.Component {
             src="https://unpkg.com/@myuw-web-components/myuw-profile@latest"
           ></script>
           {this.state.loggedIn ? this.renderNavbar() : this.renderNothing()}
-        </header>
+        </h1>
         {this.loginRender()}
       </>
     );
