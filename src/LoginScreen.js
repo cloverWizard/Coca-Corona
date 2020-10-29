@@ -18,11 +18,11 @@ class LoginScreen extends React.Component {
             <Form>
                 <Form.Group controlId="formUsername">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Enter Username" onChange={e => this.setState({username})}/>
+                    <Form.Control type="username" placeholder="Enter Username" onChange={e => this.setState({username: e.target.value})}/>
                 </Form.Group>
                 <Form.Group controlId="formPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password"/>
+                    <Form.Control type="password" placeholder="Enter Password" onChange={e => this.setState({password: e.target.value})}/>
                 </Form.Group>
             </Form>
             <Button onClick={() => this.props.login("John","pass")}>Login</Button>
